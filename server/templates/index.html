@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Urgent Security Alert</h1>
+        <p>Dear User,</p>
+        <p>Your account has been flagged for unusual activity. Please verify your information by clicking the link below:</p>
+        <div class="phishing-email">
+            <p><a href="#" id="phishing-link">Click here to verify your account</a></p>
+        </div>
+        <form action="/response" method="post" id="response-form">
+            <input type="hidden" name="timestamp" value="{{ now.isoformat() }}">
+            <button type="submit" name="action" value="click" class="button">Click Link</button>
+            <button type="submit" name="action" value="report" class="button">Report Email</button>
+        </form>
+        <a href="/results" class="view-results">View Results</a>
+    </div>
+</body>
+</html>
